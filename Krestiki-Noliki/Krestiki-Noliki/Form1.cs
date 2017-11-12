@@ -15,6 +15,16 @@ namespace Krestiki_Noliki
         //поле из 9 картинок
         PictureBox[] GamePole = new PictureBox[9];
 
+        int P = 0, C = 0;       //игрок, компьютер
+
+        int[] GamePoleC = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        
+        string[] ImgName =
+        {
+            "Blank.png", //пустой блок
+            "x.png", //крестик
+            "o.png"  //нолик
+        };
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +38,7 @@ namespace Krestiki_Noliki
                 HeighP = 75, //высота
                 WhidthP = 75;  //ширина
 
-            //имя в ячейке будет начинаться с этих символов
+            //имя в ячейке 
             string NAME = "P_";
 
             //счетчик подсчета картинок
@@ -37,7 +47,7 @@ namespace Krestiki_Noliki
             {
                 for (int xx = 0; xx < 3; xx++)
                 {
-                    GamePole[0] = new PictureBox()
+                    GamePole[IndexPicture] = new PictureBox()
                     {
                         Name = NAME + IndexPicture,                 //Задаем имя картинки
                         Height = HeighP,
@@ -46,23 +56,199 @@ namespace Krestiki_Noliki
                         SizeMode = PictureBoxSizeMode.StretchImage, //сжатие картинки
                         Location = new Point(dx, dy)
                     };
-
-                    panel3.Controls.Add(GamePole[0]);
+                    GamePole[IndexPicture].Click += Picture_Click;
+                    panel3.Controls.Add(GamePole[IndexPicture]);
                     IndexPicture++;
                     dx += HeighP + 1;
                 }
                 dx = 0;
-                dy += WhidthP;
+                dy += WhidthP+1;
             }
 
         }
 
+        void BlockPole()    //Блокировка поля
+        {
+            foreach (PictureBox P in GamePole) P.Enabled = false;
+        }
+
+        void RazblockPole() //Разблокировка поля
+        {
+            int I = 0;
+            foreach(PictureBox P in GamePole)
+            {
+                if (GamePoleC[I++] == 0) P.Enabled = true;
+            }
+        }
+
+        bool Stop()     //Проверка свободных ходов
+        {
+            foreach (int s in GamePoleC)
+                if (s == 0) return true;
+            return false;
+
+            
+            if (Proverka(P))        //проверяем не выиграл ли игрок
+            {
+                label3.Text = "Вы выиграли";
+                BlockPole();
+                //прячем панель игры
+                panel4.Visible = true;
+                //если не нашли то ходить больше нельзя
+                return false;
+            }
+            //проверяем не выиграл ли игрок
+            if (Proverka(C))
+            {
+                label3.Text = "Вы проиграли";
+                panel4.Visible = true;
+                //прячем панель игры
+                BlockPole();
+                panel3.Visible = false;
+                return false;
+            }
+
+
+            //если ходить больше нельзя и никто не выиграл значит пишем что ничья
+            label3.Text = "Ничья";
+            //прячем панель игры
+            panel4.Visible = true;
+            BlockPole();
+        }
+
+        bool Proverka(int hod)  //Проверка победы
+        {
+            //список вариантов выигрышных комбинаций
+            int[,] Variant =
+            {      {    //1 вариант
+                    1,1,1,  //Х Х Х
+                    0,0,0,  //_ _ _
+                    0,0,0   //_ _ _
+                }, {    //2 вариант
+                    0,0,0,  //_ _ _
+                    1,1,1,  //Х Х Х
+                    0,0,0   //_ _ _
+                }, {    //3 вариант
+                    0,0,0,  //_ _ _
+                    0,0,0,  //_ _ _
+                    1,1,1   //Х Х Х
+                }, {    //4 вариант
+                    1,0,0,  //Х _ _
+                    1,0,0,  //Х _ _
+                    1,0,0   //Х _ _
+                }, {    //5 вариант
+                    0,1,0,  //_ Х _
+                    0,1,0,  //_ Х _
+                    0,1,0   //_ Х _
+                }, {    //6 вариант
+                    0,0,1,  //_ _ Х
+                    0,0,1,  //_ _ Х
+                    0,0,1   //_ _ Х
+                }, {    //7 вариант
+                    1,0,0,  //Х _ _
+                    0,1,0,  //_ Х _
+                    0,0,1   //_ _ Х
+                }, {    //8 вариант
+                    0,0,1,   //_ _ Х
+                    0,1,0,   //_ Х _
+                    1,0,0    //Х _ _
+                }
+            };
+            int[] TestMap = new int[GamePoleC.Length];
+            for (int I = 0; I < GamePoleC.Length; I++)
+                if (GamePoleC[I] == hod) TestMap[I] = 1;    //если число из поля равен ходу
+ 
+            for (int Variant_Index = 0; Variant_Index < Variant.GetLength(0); Variant_Index++) //вариант для сравненич
+            {
+                int f = 0;        //счетчик для подсчета 
+                for (int TestIndex = 0; TestIndex < TestMap.Length; TestIndex++)
+                {
+                    if (Variant[Variant_Index, TestIndex] == 1)
+                    {
+                        if (Variant[Variant_Index, TestIndex] == TestMap[TestIndex]) f++;    //если в параметр  в варианте выигрыша совпал с вариантом на поле
+                    }
+                    if (f == 3) return true;        //найдены 3 варианта
+                }
+            }
+            return false;
+        }
+
+        void HodPC()    //ход компьютера
+        {
+            Random Rand = new Random();
+            GENER:
+            if (Stop())
+            {
+                int Step = Rand.Next(0, 8);
+                if (GamePoleC[Step] == 0)
+                {
+                    GamePole[Step].Image = Image.FromFile(ImgName[C]);
+                    GamePoleC[Step] = C;
+
+                }
+                else goto GENER;
+                if (Proverka(C))
+                {
+                    label3.Text = "Вы проиграли";
+                }
+            }
+
+            }
+
+        private void Picture_Click(object sender, EventArgs e)
+        {
+            if(Stop())
+            {
+                PictureBox CImage = sender as PictureBox;
+                string[] PName = CImage.Name.Split('_');    //номер нажатой ячейки
+                int Index = Convert.ToInt32(PName[1]);      //
+                GamePole[Index].Image = Image.FromFile(ImgName[P]); //загрузка изображения хода игрока
+                GamePoleC[Index] = P;
+                if(Proverka(P))
+                {
+                    BlockPole();
+                    HodPC();
+                    RazblockPole();
+                }
+                else
+                {
+                    label3.Text = "Вы выиграли";
+                    BlockPole();
+                }
+                
+            }
+            else
+            {
+
+            }
+            
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            panel3.Visible = true;
-
             panel1.Visible = false;
+            panel2.Visible = true;
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            GamePoleC = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            foreach (PictureBox P in GamePole) P.Image = Image.FromFile(ImgName[0]);
+            P = 0; C = 0;
+            RazblockPole();
+            panel1.Visible = true;
+            panel2.Visible = false;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            GamePoleC = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            foreach (PictureBox P in GamePole) P.Image = Image.FromFile(ImgName[0]);
+            P = 0; C = 0;
+            RazblockPole();
+            panel2.Visible = true;
+            panel1.Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -80,8 +266,26 @@ namespace Krestiki_Noliki
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e) // выбор хода Х
+        {
+            P = 1;
+            C = 2;
+            panel2.Visible = false;
+            panel3.Visible = true;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e) // выбор хода О
+        {
+            P = 2;
+            C = 1;
+            panel2.Visible = false;
+            panel3.Visible = true;
+            HodPC();
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();        }
+            Application.Exit();
+        }
     }
 }

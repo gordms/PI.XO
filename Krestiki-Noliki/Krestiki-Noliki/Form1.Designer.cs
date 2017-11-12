@@ -42,8 +42,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -138,6 +138,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(50, 48);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
             // 
@@ -148,6 +149,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(50, 48);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label2
             // 
@@ -167,8 +169,8 @@
             // 
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.button5);
-            this.panel4.Controls.Add(this.button4);
+            this.panel4.Controls.Add(this.button7);
+            this.panel4.Controls.Add(this.button6);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.label3);
@@ -197,29 +199,29 @@
             this.label4.Text = "Компьютер:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // button5
+            // button7
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(64, 162);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(104, 32);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Заново";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button1_Click);
+            this.button7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.Location = new System.Drawing.Point(64, 162);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(104, 32);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Заново";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button4
+            // button6
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(64, 124);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(104, 32);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "В меню";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button1_Click);
+            this.button6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(64, 124);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(104, 32);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "В меню";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -295,11 +297,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
     }
