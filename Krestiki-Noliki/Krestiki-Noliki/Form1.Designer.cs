@@ -42,11 +42,11 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,8 +71,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 1;
-            this.button3.Text = "About";
+            this.button3.Text = "Правила";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -82,7 +83,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 34);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Exit";
+            this.button2.Text = "Выход";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -94,7 +95,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Play";
+            this.button1.Text = "Играть";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -118,6 +119,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(232, 229);
             this.panel3.TabIndex = 0;
+            this.panel3.Visible = false;
             // 
             // panel2
             // 
@@ -128,6 +130,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(232, 231);
             this.panel2.TabIndex = 0;
+            this.panel2.Visible = false;
             // 
             // pictureBox1
             // 
@@ -167,17 +170,18 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.button7);
-            this.panel4.Controls.Add(this.button6);
+            this.panel4.Controls.Add(this.button5);
+            this.panel4.Controls.Add(this.button4);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Location = new System.Drawing.Point(304, 260);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(232, 229);
             this.panel4.TabIndex = 0;
+            this.panel4.Visible = false;
             // 
             // label5
             // 
@@ -199,56 +203,6 @@
             this.label4.Text = "Компьютер:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(64, 162);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(104, 32);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Заново";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(64, 124);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(104, 32);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "В меню";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label7.Font = new System.Drawing.Font("Segoe Script", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Image = ((System.Drawing.Image)(resources.GetObject("label7.Image")));
-            this.label7.Location = new System.Drawing.Point(174, 36);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 23);
-            this.label7.TabIndex = 0;
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label7.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Font = new System.Drawing.Font("Segoe Script", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Image = ((System.Drawing.Image)(resources.GetObject("label6.Image")));
-            this.label6.Location = new System.Drawing.Point(174, 11);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 23);
-            this.label6.TabIndex = 0;
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label6.Click += new System.EventHandler(this.label1_Click);
-            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.SystemColors.MenuBar;
@@ -262,11 +216,50 @@
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label3.Click += new System.EventHandler(this.label1_Click);
             // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.DarkSalmon;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label6.Location = new System.Drawing.Point(166, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 23);
+            this.label6.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.DarkSalmon;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label7.ImageKey = "(отсутствует)";
+            this.label7.Location = new System.Drawing.Point(166, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 23);
+            this.label7.TabIndex = 4;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(81, 126);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Заново";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(81, 170);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "В меню";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 492);
+            this.ClientSize = new System.Drawing.Size(266, 254);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
@@ -297,13 +290,13 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
     }
 }
 

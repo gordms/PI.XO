@@ -17,6 +17,9 @@ namespace Krestiki_Noliki
 
         int P = 0, C = 0;       //игрок, компьютер
 
+        int Pobeda_P = 0;
+        int Pobeda_C = 0;
+
         int[] GamePoleC = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         
         string[] ImgName =
@@ -67,6 +70,12 @@ namespace Krestiki_Noliki
 
         }
 
+        void KolPob()
+        {
+            label6.Text = Convert.ToString(Pobeda_C);
+            label7.Text = Convert.ToString(Pobeda_P);
+        }
+
         void BlockPole()    //Блокировка поля
         {
             foreach (PictureBox P in GamePole) P.Enabled = false;
@@ -86,13 +95,14 @@ namespace Krestiki_Noliki
             foreach (int s in GamePoleC)
                 if (s == 0) return true;
             return false;
-
             
             if (Proverka(P))        //проверяем не выиграл ли игрок
             {
                 label3.Text = "Вы выиграли";
+                Pobeda_P++;
+                KolPob();
                 BlockPole();
-                //прячем панель игры
+                panel3.Visible = false;
                 panel4.Visible = true;
                 //если не нашли то ходить больше нельзя
                 return false;
@@ -102,18 +112,24 @@ namespace Krestiki_Noliki
             {
                 label3.Text = "Вы проиграли";
                 panel4.Visible = true;
+                Pobeda_C++;
+                KolPob();
+                panel3.Visible = false;
+                panel4.Visible = true;
                 //прячем панель игры
                 BlockPole();
-                panel3.Visible = false;
                 return false;
             }
 
-
+            return false;
             //если ходить больше нельзя и никто не выиграл значит пишем что ничья
             label3.Text = "Ничья";
             //прячем панель игры
+            panel3.Visible = false;
             panel4.Visible = true;
+            KolPob();
             BlockPole();
+            
         }
 
         bool Proverka(int hod)  //Проверка победы
@@ -179,7 +195,7 @@ namespace Krestiki_Noliki
             GENER:
             if (Stop())
             {
-                int Step = Rand.Next(0, 8);
+                int Step = Rand.Next(0, 9);
                 if (GamePoleC[Step] == 0)
                 {
                     GamePole[Step].Image = Image.FromFile(ImgName[C]);
@@ -189,8 +205,19 @@ namespace Krestiki_Noliki
                 else goto GENER;
                 if (Proverka(C))
                 {
+                    panel3.Visible = false;
+                    panel4.Visible = true;
                     label3.Text = "Вы проиграли";
+                    Pobeda_C++;
+                    KolPob();
                 }
+            }
+            else
+            {
+                panel3.Visible = false;
+                panel4.Visible = true;
+                label3.Text = "Ничья";
+                KolPob();
             }
 
             }
@@ -204,7 +231,7 @@ namespace Krestiki_Noliki
                 int Index = Convert.ToInt32(PName[1]);      //
                 GamePole[Index].Image = Image.FromFile(ImgName[P]); //загрузка изображения хода игрока
                 GamePoleC[Index] = P;
-                if(Proverka(P))
+                if(!Proverka(P))
                 {
                     BlockPole();
                     HodPC();
@@ -212,14 +239,20 @@ namespace Krestiki_Noliki
                 }
                 else
                 {
+                    panel3.Visible = false;
+                    panel4.Visible = true;
                     label3.Text = "Вы выиграли";
                     BlockPole();
+                    Pobeda_P++;
+                    KolPob();
                 }
-                
             }
             else
             {
-
+                panel3.Visible = false;
+                panel4.Visible = true;
+                label3.Text = "Ничья";
+                KolPob();
             }
             
         }
@@ -231,26 +264,6 @@ namespace Krestiki_Noliki
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            GamePoleC = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            foreach (PictureBox P in GamePole) P.Image = Image.FromFile(ImgName[0]);
-            P = 0; C = 0;
-            RazblockPole();
-            panel1.Visible = true;
-            panel2.Visible = false;
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            GamePoleC = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            foreach (PictureBox P in GamePole) P.Image = Image.FromFile(ImgName[0]);
-            P = 0; C = 0;
-            RazblockPole();
-            panel2.Visible = true;
-            panel1.Visible = false;
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -259,6 +272,9 @@ namespace Krestiki_Noliki
         private void Form1_Load(object sender, EventArgs e)
         {
             MainPole();
+            panel2.Location = new Point(12, 12);
+            panel3.Location = new Point(12, 12);
+            panel4.Location = new Point(12, 12);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -281,6 +297,34 @@ namespace Krestiki_Noliki
             panel2.Visible = false;
             panel3.Visible = true;
             HodPC();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            GamePoleC = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            foreach (PictureBox P in GamePole) P.Image = Image.FromFile(ImgName[0]);
+            P = 0; C = 0;
+            RazblockPole();
+            panel2.Visible = true;
+            panel1.Visible = false;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            GamePoleC = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            foreach (PictureBox P in GamePole) P.Image = Image.FromFile(ImgName[0]);
+            P = 0; C = 0;
+            RazblockPole();
+            panel1.Visible = true;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            panel4.Visible = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form3 F3 = new Form3();
+            F3.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
