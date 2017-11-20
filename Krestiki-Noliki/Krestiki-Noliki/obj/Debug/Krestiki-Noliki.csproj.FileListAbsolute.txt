@@ -19,3 +19,14 @@ C:\Users\gordi\Desktop\PI.XO-bd494d925c417cd0006de403ceddb5fb6c13465d\Krestiki-N
 C:\Users\gordi\Desktop\PI.XO-bd494d925c417cd0006de403ceddb5fb6c13465d\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki-Noliki.exe
 C:\Users\gordi\Desktop\PI.XO-bd494d925c417cd0006de403ceddb5fb6c13465d\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki-Noliki.pdb
 C:\Users\gordi\Desktop\PI.XO-bd494d925c417cd0006de403ceddb5fb6c13465d\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki_Noliki.Form3.resources
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\bin\Debug\Krestiki-Noliki.exe.config
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\bin\Debug\Krestiki-Noliki.exe
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\bin\Debug\Krestiki-Noliki.pdb
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki-Noliki.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki_Noliki.Form1.resources
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki_Noliki.Form3.resources
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki_Noliki.Properties.Resources.resources
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki-Noliki.csproj.GenerateResource.Cache
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki-Noliki.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki-Noliki.exe
+C:\Users\User\Documents\GitHub\Новая папка\PI.XO\Krestiki-Noliki\Krestiki-Noliki\obj\Debug\Krestiki-Noliki.pdb
